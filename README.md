@@ -19,16 +19,6 @@ Execute the following command in the terminal:
 python evaluate_algorithm.py
 ```
 
-## Task III - Report Generation (generate_report.py)
-The `generate_report.py` script creates a Jupyter notebook containing a detailed report for each task. It covers explanations of the environment properties, the parameter selection process, and placeholders for plotting results. Running this script generates a comprehensive report encapsulating the project's insights.
-
-### Running the Report Generator
-Execute the following command in the terminal:
-
-```bash
-python generate_report.py
-```
-
 ## Task IV - Demo
 For the demo session scheduled for October 31, 2023, showcase the optimal solutions derived from the algorithm. Utilize the n-step RL algorithm to learn optimal policies, tune the algorithm parameters, plot the results, and demonstrate the efficiency of the learned policies.
 
