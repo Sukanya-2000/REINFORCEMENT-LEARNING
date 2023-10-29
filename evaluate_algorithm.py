@@ -1,14 +1,14 @@
 # Filename: evaluate_algorithm.py
 
-from n_step_rl_algorithm import NStepRLAlgorithm
+import numpy as np
+import gym
 import matplotlib.pyplot as plt
+from n_step_rl_algorithm import NStepRLAlgorithm
 
-def evaluate_algorithm(environment, n_values, num_episodes):
-    for n in n_values:
-        algo = NStepRLAlgorithm(n=n, environment=environment)
-        algo.train(num_episodes=num_episodes)
-        # Plot value functions, policy, sum of rewards, etc.
-        # Save or display the plots
+# Helper function to plot results
+def plot_results(algo, environment, num_episodes, title):
+    # Placeholder for plotting logic
+    pass
 
 # Evaluate on different environments
 if __name__ == "__main__":
@@ -17,4 +17,24 @@ if __name__ == "__main__":
     num_episodes = 1000
 
     for env in environments:
-        evaluate_algorithm(environment=env, n_values=n_values, num_episodes=num_episodes)
+        for n in n_values:
+            algo = NStepRLAlgorithm(n=n, environment=env)
+
+            # Custom tuning for each environment
+            if env == 'Blackjack-v0':
+                algo.alpha = 0.01  # Adjust the learning rate for Blackjack
+                algo.gamma = 0.9   # Adjust the discount factor for Blackjack
+            elif env == 'Taxi-v3':
+                algo.alpha = 0.1   # Adjust the learning rate for Taxi
+                algo.gamma = 0.95  # Adjust the discount factor for Taxi
+            elif env == 'CliffWalking-v0':
+                algo.alpha = 0.05  # Adjust the learning rate for Cliff Walking
+                algo.gamma = 0.99  # Adjust the discount factor for Cliff Walking
+            elif env == 'FrozenLake-v1':
+                algo.alpha = 0.02  # Adjust the learning rate for Frozen Lake
+                algo.gamma = 0.98  # Adjust the discount factor for Frozen Lake
+
+            algo.train(num_episodes=num_episodes)
+
+            # Placeholder: You may want to customize this based on your specific plotting needs
+            plot_results(algo, env, num_episodes, f'{env} - n={n}')
