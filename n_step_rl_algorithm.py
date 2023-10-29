@@ -49,6 +49,19 @@ class NStepRLAlgorithm:
 
             self.update_q_values(states, actions, rewards)
 
+    def plot_results(self, num_episodes, title):
+        # Placeholder for basic plotting logic
+        episodes = np.arange(1, num_episodes + 1)
+        rewards = np.random.normal(0, 1, num_episodes)  # Replace with actual rewards
+        
+        plt.figure(figsize=(10, 6))
+        plt.plot(episodes, rewards, label=f'n = {self.n}')
+        plt.title(title)
+        plt.xlabel('Episodes')
+        plt.ylabel('Sum of Rewards')
+        plt.legend()
+        plt.show()
+
 # Test your implementation on Blackjack environment
 if __name__ == "__main__":
     n_step_algo = NStepRLAlgorithm(n=3, environment='Blackjack-v0')
